@@ -14,11 +14,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 import android.support.v7.widget.DividerItemDecoration
 
 
-
-
 class MainActivity : AppCompatActivity() {
 
-    var contactList: List<Contact> = listOf()
     private var myReceiver: BroadcastReceiver? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         startService(getData)
     }
 
-    private fun showContacts() {
+    private fun showContacts(contactList: List<Contact>) {
 
         val contactRecycler = findViewById<RecyclerView>(R.id.contact_recycler)
         val recyclerAdapter = RecyclerAdapter(contactList, this)
@@ -60,8 +57,10 @@ class MainActivity : AppCompatActivity() {
 
         override fun onReceive(context: Context, intent: Intent) {
 
-            contactList = intent.extras.get("CONTACTS_DATA") as List<Contact>
-            showContacts()
+            intent.extras?.get("CONTACTS_DATA")?.let {
+                if (it is ArrayList<*>)
+                    showContacts(it as ArrayList<Contact>)
+            }
 
         }
     }

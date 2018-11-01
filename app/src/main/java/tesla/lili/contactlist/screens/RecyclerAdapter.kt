@@ -11,7 +11,8 @@ import com.budiyev.android.imageloader.ImageLoader
 import tesla.lili.contactlist.R
 import tesla.lili.contactlist.data.model.Contact
 
-class RecyclerAdapter (val contactList: List<Contact>, val context: Context) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
+
+class RecyclerAdapter (private val contactList: List<Contact>, val context: Context) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
     class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val image: ImageView = view.findViewById(R.id.image)
@@ -20,7 +21,7 @@ class RecyclerAdapter (val contactList: List<Contact>, val context: Context) : R
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, pos: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.contact_card, viewGroup, false)
-        return ViewHolder(view);
+        return ViewHolder(view)
 
     }
 
@@ -30,7 +31,7 @@ class RecyclerAdapter (val contactList: List<Contact>, val context: Context) : R
 
     override fun onBindViewHolder(holder: ViewHolder, pos: Int) {
 
-        holder.name.setText(contactList[pos].name)
+        holder.name.text = contactList[pos].name
         ImageLoader.with(context).from(contactList[pos].picture).load(holder.image)
 
         holder.itemView.setOnClickListener {
@@ -38,9 +39,5 @@ class RecyclerAdapter (val contactList: List<Contact>, val context: Context) : R
         }
 
     }
-
-
-
-
 
 }

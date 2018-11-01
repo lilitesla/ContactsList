@@ -11,9 +11,6 @@ import okhttp3.Response
 import tesla.lili.contactlist.data.model.Contact
 import java.io.IOException
 import java.io.Serializable
-import com.google.gson.reflect.TypeToken
-
-
 
 
 class GetDataService : IntentService("GetDataService") {
@@ -36,8 +33,6 @@ class GetDataService : IntentService("GetDataService") {
             override fun onResponse(call: Call, response: Response) {
 
                 val contacts = gson.fromJson(response.body()?.charStream(), Array<Contact>::class.java)
-
-                Log.e("--->", " res ok")
 
                 val intentResult = Intent()
                 intentResult.action = ACTION_CONTACTS

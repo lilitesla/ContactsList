@@ -2,7 +2,6 @@ package tesla.lili.contactlist.screens
 
 import android.app.Application
 import okhttp3.OkHttpClient
-import okhttp3.Request
 
 
 class App : Application() {
@@ -19,8 +18,5 @@ class App : Application() {
         instance = this
         client = OkHttpClient()
 
-//        val request = Request.Builder()
-//            .url("http://publicobject.com/helloworld.txt")
-//            .build()
     }
 }
