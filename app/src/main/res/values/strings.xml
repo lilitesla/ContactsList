@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">ContactList</string>
+    <string name="app_name">Contact List</string>
+    
+    <string name="caption_name">Name</string>
+    <string name="caption_phone">Phone</string>
+    <string name="caption_email">Email</string>
+    <string name="caption_address">Address</string>
+
 </resources>
